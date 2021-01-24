@@ -7,36 +7,16 @@ const users = [
   { name: 'Lux', active: false },
 ];
 
-const toggleUserState = (allUsers, userName, callback) => {
+const toggleUserState = (allUsers, userName) => {
   return new Promise(resolve => {
     const updatedUsers = allUsers.map(user =>
       user.name === userName ? { ...user, active: !user.active } : user,
     );
     Promise.all(updatedUsers).then(console.table);
-    //   callback(updatedUsers);
   });
 };
 
-const logger = updatedUsers => console.table(updatedUsers);
+const logger = updatedUsers => updatedUsers;
 
-// Promise.all(promises)
-//   .then(results => {
-//     console.log(
-//       '%c 📝 Заезд окончен, принимаются ставки.',
-//       'color: blue; font-size: 16px;',
-//     );
-//     console.table(results);
-//   })
-//   .catch(console.log);
-
-/*
- * Сейчас работает так
- */
-// toggleUserState(users, 'Mango', logger);
-// toggleUserState(users, 'Lux', logger);
-
-/*
- * Должно работать так
- */
 toggleUserState(users, 'Mango').then(logger);
 toggleUserState(users, 'Lux').then(logger);
