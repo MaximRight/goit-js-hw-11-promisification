@@ -33,8 +33,6 @@ const logError = id => {
   );
 };
 
-// makeTransaction({ id: 70, amount: 150 }).then(console.log);
-
 makeTransaction({ id: 70, amount: 150 }).then(logSuccess).catch(logError);
 
 makeTransaction({ id: 71, amount: 230 }).then(logSuccess).catch(logError);
